@@ -1,8 +1,20 @@
 package br.com.encoded.nave.entities;
 
-public class User {
+import java.io.Serializable;
 
-	private Integer id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String nome;
 	private String email;
 	private String phone;
@@ -11,7 +23,7 @@ public class User {
 	public User() {
 	}
 	
-	public User(Integer id, String nome, String email, String phone, String password) {
+	public User(Long id, String nome, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -20,11 +32,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -87,7 +99,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [nome=" + nome + ", email=" + email + ", phone=" + phone + "]";
+		return "User [id=" + id + "]";
 	}
 	
 }
